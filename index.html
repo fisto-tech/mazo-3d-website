@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAAZO | The King of Mangoes</title>
+    <meta name="description" content="Indulge in the rich, creamy goodness of MAAZO. Premium mango pulp drinks crafted from the finest Alphonso mangoes. Pure tropical bliss in every sip.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+
+    <div id="loader">
+        <div class="loader-content">
+            <img src="mazo-logo.webp" alt="MAAZO" class="loader-logo">
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+            <p>Harvesting the finest Alphonso mangoes...</p>
+        </div>
+    </div>
+
+    <nav class="navbar" id="navbar">
+        <img src="mazo-logo.webp" alt="MAAZO" class="logo">
+        <div class="nav-links">
+            <a href="#">Our Story</a>
+            <a href="#">The Mangoes</a>
+            <a href="#">Craftsmanship</a>
+            <a href="#" class="btn-primary">Order Now</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#">Our Story</a>
+        <a href="#">The Mangoes</a>
+        <a href="#">Craftsmanship</a>
+        <a href="#" class="btn-primary">Order Now</a>
+    </div>
+
+    <div id="main">
+        <div class="canvas-container">
+            <canvas id="hero-canvas"></canvas>
+        </div>
+
+        <section class="section hero" id="section1">
+            <div class="content">
+                <h1 class="reveal-text">The King's <br><span> Choice</span></h1>
+                <p class="reveal-subtext">Pressed from the finest Alphonso mangoes. Pure royalty in every drop.</p>
+                <div class="scroll-indicator reveal-subtext">
+                    <div class="mouse">
+                        <div class="wheel"></div>
+                    </div>
+                    <span>Scroll to Discover</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="section2">
+            <div class="content left">
+                <h2 class="reveal-text">100% Natural <br><span>Pulp</span></h2>
+                <p class="reveal-subtext">No artificial flavors. No preservatives. Just the rich, velvety essence of handpicked mangoes.</p>
+            </div>
+        </section>
+
+        <section class="section" id="section3">
+            <div class="content right">
+                <h2 class="reveal-text">Crafted with <br><span>Precision</span></h2>
+                <p class="reveal-subtext">Our unique cold-press technology locks in the freshness and nutrients of tropical perfection.</p>
+            </div>
+        </section>
+
+        <section class="section" id="section4">
+            <div class="content center">
+                <h2 class="reveal-text">Taste the <br><span>Difference</span></h2>
+                <p class="reveal-subtext">MAAZO isn't just a drink—it's an experience of pure mango indulgence.</p>
+            </div>
+        </section>
+
+        <section class="section footer-section" id="section5">
+            <div class="glass-card">
+                <h3 class="reveal-text">Ready for Royalty?</h3>
+                <p class="reveal-subtext">Order your MAAZO today and elevate your senses to new heights.</p>
+                <div class="footer-cta reveal-subtext">
+                    <a href="#" class="btn-glow">Order Now</a>
+                    <a href="#" class="btn-outline">Find a Store</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- GSAP & Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

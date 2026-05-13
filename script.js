@@ -123,42 +123,60 @@ function initScrollAnimations() {
 
     // Split Text and Animate
     const splitText = (el) => {
-        const text = el.innerText;
-        el.innerHTML = text.split('').map(char => 
-            `<span class="char" style="display:inline-block">${char === ' ' ? '&nbsp;' : char}</span>`
-        ).join('');
+        const content = el.innerHTML;
+        const temp = document.createElement('div');
+        temp.innerHTML = content;
+        
+        const process = (node) => {
+            if (node.nodeType === 3) { // Text node
+                const chars = node.textContent.split('').map(char => 
+                    `<span class="char" style="display:inline-block">${char === ' ' ? '&nbsp;' : char}</span>`
+                ).join('');
+                const span = document.createElement('span');
+                span.innerHTML = chars;
+                node.parentNode.replaceChild(span, node);
+            } else if (node.nodeType === 1) { // Element node
+                Array.from(node.childNodes).forEach(process);
+            }
+        };
+        
+        Array.from(temp.childNodes).forEach(process);
+        el.innerHTML = temp.innerHTML;
     };
 
     const sections = gsap.utils.toArray(".section");
     sections.forEach((section, i) => {
-        const title = section.querySelector(".reveal-text");
+        const titles = section.querySelectorAll(".reveal-text");
         const subtext = section.querySelector(".reveal-subtext");
 
-        if (title) {
-            splitText(title);
-            const chars = title.querySelectorAll(".char");
-            
-            // Delay the last section slightly more for "next scroll" feel
-            const startPos = section.id === "section5" ? "top 85%" : "top 70%";
+        titles.forEach((title, index) => {
+            if (title) {
+                splitText(title);
+                const chars = title.querySelectorAll(".char");
+                
+                // Delay the last section slightly more for "next scroll" feel
+                const startPos = section.id === "section5" ? "top 85%" : "top 70%";
 
-            gsap.fromTo(chars, 
-                { opacity: 0, y: 50, rotateX: -90 },
-                {
-                    opacity: 1, 
-                    y: 0, 
-                    rotateX: 0,
-                    duration: 1,
-                    stagger: 0.03,
-                    ease: "power3.out",
-                    scrollTrigger: {
-                        trigger: section,
-                        start: startPos,
-                        end: "bottom 30%",
-                        toggleActions: "play none play reverse",
+                gsap.fromTo(chars, 
+                    { opacity: 0, y: 50, rotateX: -90 },
+                    {
+                        opacity: 1, 
+                        y: 0, 
+                        rotateX: 0,
+                        duration: 1,
+                        stagger: 0.03,
+                        delay: index * 0.2,
+                        ease: "power3.out",
+                        scrollTrigger: {
+                            trigger: section,
+                            start: startPos,
+                            end: "bottom 30%",
+                            toggleActions: "play none play reverse",
+                        }
                     }
-                }
-            );
-        }
+                );
+            }
+        });
 
         if (subtext) {
             const startPos = section.id === "section5" ? "top 80%" : "top 65%";
